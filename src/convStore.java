@@ -5,9 +5,12 @@ public class convStore {
 
     Scanner input = new Scanner(System.in);
 
-    public int numSodas;
+    public int numSodas = 0;
     int numChips;
     int numBread;
+
+    int numColas = 0;
+    int numSprites = 0;
 
 
     //sodas mainCola = new Cola();
@@ -17,6 +20,8 @@ public class convStore {
     ArrayList<sodas> sodasInCart = new ArrayList<sodas>();
 
     ArrayList<products> productsInStore = new ArrayList<>();
+
+
 
     public convStore() {
 
@@ -34,32 +39,28 @@ public class convStore {
 
     }
 
-    public void buy(String item, int amtToBuy) {
-        if (item.equalsIgnoreCase("soda") && numSodas > amtToBuy) {
+    public void buy(products product, int amtToBuy) {
+        //add user-pc dialogue here
 
-            System.out.println("What type of soda would you want? We have cola and sprite!");
-            // insert user input code here
-            String answer = input.next();
-            if (answer.equalsIgnoreCase("Cola")) {
-                int bought = 0;
-                for (sodas soda : sodaArr) {
-                    if (soda.name.equalsIgnoreCase("Cola") && bought < amtToBuy) {
-                        bought += 1;
-                        sodasInCart.add(soda);
+        /*
+        if (product.name.equalsIgnoreCase("Cola") && numColas > amtToBuy) {
+            //Above If statement authorizes the purchase
 
+            productsInStore.removeAll(sodasInCart);
 
-
-                    }
-                }
-
-                sodaArr.removeAll(sodasInCart);
-            }
 
             numSodas -= amtToBuy;
+            numColas -= amtToBuy;
+
         } else {
             System.out.println("The item you have chosen is unavailable, or does not have sufficient stock left.");
             //add showing stock function
         }
+
+         */
+
+        productsInStore.removeAll(product.purchaseAProduct(product, amtToBuy, productsInStore));
+
     }
 
     public static void main(String[] args) {
@@ -72,21 +73,21 @@ public class convStore {
         convStore HappyShop = new convStore();
         HappyShop.restock(5, mainCola);
         System.out.println(HappyShop.productsInStore);
-        System.out.println("The shop has: " + HappyShop.numSodas + " sodas");
+        System.out.printf("The shop has: %d sodas%n", HappyShop.numSodas);
 
         HappyShop.restock(5, mainSprite);
         System.out.println(HappyShop.productsInStore);
-        System.out.println("The shop has: " + HappyShop.numSodas + " sodas");
+        System.out.printf("The shop has: %d sodas%n", HappyShop.numSodas);
 
         System.out.println("What would you like to buy?");
         String itemChoice = userInput.next();
         System.out.println("How many?");
         int itemAmount = userInput.nextInt();
 
-        HappyShop.buy(itemChoice, itemAmount);
+        HappyShop.buy(mainSprite, itemAmount);
 
-        System.out.println(HappyShop.sodaArr);
-        System.out.println("The shop has: " + HappyShop.numSodas + " sodas");
+        System.out.println(HappyShop.productsInStore);
+        System.out.printf("The shop has: %d sodas%n", HappyShop.numSodas);
 
     }
 

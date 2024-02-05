@@ -88,8 +88,6 @@ public class convStore {
         System.out.println(HappyShop.sodaArr);
         System.out.println("The shop has: " + HappyShop.numSodas + " sodas");
 
-        System.out.println("This will appear to test offline compatibility");
-
     }
 
 }

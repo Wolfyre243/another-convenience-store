@@ -17,10 +17,21 @@ public class convStore {
 
     }
 
-    public void restockSoda(int restockAmt, sodas sodaType) {
+    public void restockSoda(int restockAmt, String sodaType) {
         numSodas += restockAmt;
-        for (int i = 0; i < restockAmt; i++ ) {
-            sodaArr.add(sodaType);
+        if (sodaType.equalsIgnoreCase("Cola")) {
+            for (int i = 0; i < restockAmt; i++ ) {
+                sodas colaToAdd = new Cola();
+
+                sodaArr.add(colaToAdd);
+
+            }
+        } else if (sodaType.equalsIgnoreCase("Sprite")) {
+            for (int i = 0; i < restockAmt; i++ ) {
+                sodas spriteToAdd = new Sprite();
+
+                sodaArr.add(spriteToAdd);
+            }
         }
     }
 
@@ -58,7 +69,7 @@ public class convStore {
         sodas Sprite = new Sprite();
 
         convStore HappyShop = new convStore();
-        HappyShop.restockSoda(5, Cola);
+        HappyShop.restockSoda(5, "Cola");
         System.out.println(HappyShop.sodaArr);
         System.out.println("The shop has: " + HappyShop.numSodas + " sodas");
 

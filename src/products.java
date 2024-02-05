@@ -1,22 +1,14 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class sodas extends products{
+public class products {
+    String productType;
     String name;
-    boolean fizzy;
-    String colour;
 
-    int numColas = 0;
-    int numSprites = 0;
-
-    public sodas(String theName, boolean isFizzy, String inColour) {
-        super("soda", theName);
-        name = theName;
-        fizzy = isFizzy;
-        colour = inColour;
+    public products(String inputProdType, String inputName) {
+        productType = inputProdType;
+        name = inputName;
     }
 
-    /*
     public ArrayList<sodas> restockSoda(int restockAmt, String sodaType) {
         //numSodas += restockAmt;
         ArrayList<sodas> sodasToRestock = new ArrayList<>();
@@ -37,16 +29,4 @@ public class sodas extends products{
 
         return sodasToRestock;
     }
-    */
-
-
-
-
-    public String open() {
-        return "*pop!";
-    }
-
-
 }
-
-

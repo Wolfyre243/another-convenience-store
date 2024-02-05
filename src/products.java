@@ -4,6 +4,8 @@ public class products {
     String productType;
     String name;
 
+    ArrayList<products> productsInStore = new ArrayList<>();
+
     public products(String inputProdType, String inputName) {
         productType = inputProdType;
         name = inputName;
@@ -29,4 +31,22 @@ public class products {
 
         return sodasToRestock;
     }
+
+
+    public ArrayList<products> purchaseAProduct(products product, int amountToBuy, ArrayList<products> currentStock) {
+
+        ArrayList<products> itemsToBuy = new ArrayList<>();
+
+        int bought = 0;
+        for (products productToBuy : currentStock) {
+            if (productToBuy.name.equalsIgnoreCase(product.name) && bought < amountToBuy) {
+                bought += 1;
+                itemsToBuy.add(productToBuy);
+
+            }
+        }
+
+        return itemsToBuy;
+    }
+
 }
